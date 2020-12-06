@@ -1,5 +1,5 @@
 import requests,concurrent.futures,time,sys
-print('usage: python3 grapper.py subs.txt #note subs.txt the domains without http,s or :// \n for ex: subdomain.site.com \t or help.google.com ')
+print('usage: python3 grapper.py subs.txt')
 print("\n")
 def speed():
 	_file=sys.argv[1]
