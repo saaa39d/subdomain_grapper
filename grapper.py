@@ -1,21 +1,20 @@
-import requests,concurrent.futures,time,sys
+import requests,concurrent.futures,sys
 print('usage: python3 grapper.py subs.txt')
 print("\n")
 def speed():
 	_file=sys.argv[1]
 	open_file= open(_file ,"r").read().splitlines()
-	for i in open_file:
+	dup_remove=set(open_file)
+	for i in dup_remove:
 		try:
 			url=requests.get("https://"+i)
 			print(url.url,"\t","status_code is: ",url.status_code)
 		except:
-			print("http not work i will try https")
 			try:
 				url1=requests.get("http://"+i)
 				print(url.url,"\t","status_code is: ",url.status_code)
 			except:
-				print("bad url" ,i)
+				pass
 
 with concurrent.futures.ThreadPoolExecutor() as pl:
-	time.sleep(0.2)
 	pl.submit(speed)
